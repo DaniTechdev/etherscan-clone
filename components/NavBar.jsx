@@ -72,7 +72,7 @@ const NavBar = () => {
 
   // console.log(price.ethusd);
   // console.log(updatedPriceDate);
-
+  // checkIfAccountExist();
   const checkIfAccountExist = async () => {
     //when one installs matamask, metamast inject the object window.ethereum in the browser to show it has been installed
     try {
@@ -91,7 +91,26 @@ const NavBar = () => {
     }
   };
 
-  // checkIfAccountExist();
+  //connectWallet
+  const connectWallet = async () => {
+    //when one installs matamask, metamast inject the object window.ethereum in the browser to show it has been installed
+    try {
+      if (!window.ethereum) return console.log("Install MetaMast");
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+
+      console.log(accounts, "accounts");
+
+      if (accounts.length) {
+        setUserAccount(accounts[0]);
+      } else {
+        console.log("Sorry you do not have account");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     checkIfAccountExist();
