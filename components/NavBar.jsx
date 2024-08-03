@@ -18,8 +18,16 @@ const NavBar = () => {
   const [price, setPrice] = useState([]);
   const [etherSupply, setEtherSupply] = useState([]);
 
+  const openUserInfo = () => {
+    if (openModel) {
+      setOpenModel(false);
+    } else if (!openModel) {
+      setOpenModel(true);
+    }
+  };
+
   const [updatedPriceDate, setUpdatedPriceDate] = useState("");
-  console.log("userAccount", userAccount);
+  // console.log("userAccount", userAccount);
 
   //GET ETHER PRICE UPDATE
   const getEtherPrice = () => {
@@ -114,7 +122,6 @@ const NavBar = () => {
 
   useEffect(() => {
     checkIfAccountExist();
-
     getEtherPrice();
   }, []);
 
@@ -133,7 +140,15 @@ const NavBar = () => {
         </div>
 
         {/* ////RIGHT SIDE OF HEADER */}
-        <div className={Style.right}>Heyyy</div>
+        <div className={Style.right}>
+          {userAccount.length ? (
+            <button onClick={() => openUserInfo()}>
+              Acc:{userAccount.slice(0, 10)}
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </div>
   );
