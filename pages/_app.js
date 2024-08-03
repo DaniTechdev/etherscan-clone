@@ -1,9 +1,19 @@
 import "../styles/globals.css";
 
-export default function App({ Component, pageProps }) {
+//INTERNAL IMPORT
+import NavBar from "../components/NavBar.jsx";
+import Footer from "../components/Footer.jsx";
+
+const MyApp = ({ Component, pageProps }) => {
   return (
-    <>
-      <Component {...pageProps} />
-    </>
+    <div>
+      <NavBar />
+      <div>
+        <Component {...pageProps} />
+      </div>
+      <Footer />
+    </div>
   );
-}
+};
+
+export default MyApp;
