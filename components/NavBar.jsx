@@ -1,21 +1,3 @@
-// import React, { useState, useEffect, useContext } from "react";
-// import Image from "next/image";
-// import axios from "axios";
-// import Link from "next/link";
-
-// //INTERNAL IMPORT
-
-// import Style from "../styles/Navbar.module.css";
-// import etherLogo from "../public/eth.png";
-// import logo from "../public/logo.png";
-// import logoTop from "../public/footerLogo.png";
-
-// const NavBar = () => {
-//   return <div className={Style.na}></div>;
-// };
-
-// export default NavBar;
-
 import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import axios from "axios";
@@ -37,6 +19,7 @@ const NavBar = () => {
   const [etherSupply, setEtherSupply] = useState([]);
 
   const [updatedPriceDate, setUpdatedPriceDate] = useState("");
+  console.log("userAccount", userAccount);
 
   //GET ETHER PRICE UPDATE
   const getEtherPrice = () => {
@@ -89,7 +72,30 @@ const NavBar = () => {
 
   // console.log(price.ethusd);
   // console.log(updatedPriceDate);
+
+  const checkIfAccountExist = async () => {
+    //when one installs matamask, metamast inject the object window.ethereum in the browser to show it has been installed
+    try {
+      if (!window.ethereum) return console.log("Install MetaMast");
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+
+      console.log(accounts, "accounts");
+
+      if (accounts.length) {
+        setUserAccount(accounts[0]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // checkIfAccountExist();
+
   useEffect(() => {
+    checkIfAccountExist();
+
     getEtherPrice();
   }, []);
 
