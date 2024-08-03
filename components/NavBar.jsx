@@ -36,7 +36,7 @@ const NavBar = () => {
   const [price, setPrice] = useState([]);
   const [etherSupply, setEtherSupply] = useState([]);
 
-  const [updatedPrice, setUpdatedPrice] = useState("");
+  const [updatedPriceDate, setUpdatedPriceDate] = useState("");
 
   //GET ETHER PRICE UPDATE
   const getEtherPrice = () => {
@@ -48,13 +48,35 @@ const NavBar = () => {
           `https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${API_ETHER_KEY}`
         )
         .then((response) => {
+          setPrice(response.data.result);
           console.log(response);
+
+          console.log(response.data.result);
+
+          //convert the timestamp into readable format since its in string form
+          const timestamp = Number(response.data.result.ethusd_timestamp);
+          console.log(timestamp);
+
+          const date = new Date(timestamp);
+
+          setUpdatedPriceDate(
+            "UpDate:" +
+              date.getHours() +
+              ":" +
+              date.getMinutes() +
+              ":" +
+              date.getSeconds()
+          );
         });
     } catch (error) {
       console.log(error);
     }
   };
 
+  // console.log("price", price);
+
+  // console.log(price.ethusd);
+  // console.log(updatedPriceDate);
   useEffect(() => {
     getEtherPrice();
   }, []);
