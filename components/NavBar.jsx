@@ -43,6 +43,7 @@ const NavBar = () => {
     try {
       const API_ETHER_KEY = "77TBH8R48THPJSKYQAXXWE8B1QJPEXI51P";
 
+      //api request for Ether updatd price
       axios
         .get(
           `https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${API_ETHER_KEY}`
@@ -67,6 +68,17 @@ const NavBar = () => {
               ":" +
               date.getSeconds()
           );
+        });
+
+      //api request for ether supply
+
+      axios
+        .get(
+          `https://api.etherscan.io/api?module=stats&action=ethsupply&apikey=${API_ETHER_KEY}`
+        )
+        .then((response) => {
+          // console.log(response.data.result);
+          setEtherSupply(response.data.result);
         });
     } catch (error) {
       console.log(error);
