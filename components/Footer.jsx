@@ -11,6 +11,7 @@ import {
 
 //INTERNAL IMPORT
 import Style from "../styles/Footer.module.css";
+import footerLogo from "../public/footerLogo.png";
 const Footer = () => {
   return (
     <div className={Style.footer}>
