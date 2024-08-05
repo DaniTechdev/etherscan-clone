@@ -1,18 +1,21 @@
 import "../styles/globals.css";
 
 //INTERNAL IMPORT
+import { EtherProvider } from "../Context/Ether";
 import NavBar from "../components/NavBar.jsx";
 import Footer from "../components/Footer.jsx";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <div>
-      <NavBar />
+    <EtherProvider>
       <div>
-        <Component {...pageProps} />
+        <NavBar />
+        <div>
+          <Component {...pageProps} />
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </EtherProvider>
   );
 };
 
