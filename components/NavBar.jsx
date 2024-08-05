@@ -154,7 +154,7 @@ const NavBar = () => {
                   <div className={Style.userModal}>
                     <div className={Style.user_box}>
                       <div className={Style.closeBtn}>
-                        <MdOutlineClose onClick={() => openUserInfo()} />s
+                        <MdOutlineClose onClick={() => openUserInfo()} />
                       </div>
                       <Image src={user} alt="user" width={50} height={50} />
                       <p>Acc: &nbsp; {userAccount.slice(0, 10)}... </p>
@@ -180,7 +180,7 @@ const NavBar = () => {
               <Image src={etherLogo} alt="ether logo" width={30} height={30} />
             </div>
             <div>
-              <h4>ETHER PRICE</h4>
+              <h4> ETHER PRICE</h4>
               <p>$ 2344444</p>
               <p>BTC 60400</p>
               <p>UPDATED PRICE</p>
@@ -207,9 +207,9 @@ const NavBar = () => {
           </div>
 
           <div className={Style.logoWidth}>
-            <p>ERC20 TOKEN</p>
-            <p>ERC21 TOKEN</p>
-            <p>ERC1155 TOKEN</p>
+            <p>ERC20 </p>
+            <p>ERC21 </p>
+            <p>ERC1155 </p>
             <p>CONTRACT</p>
           </div>
         </div>
