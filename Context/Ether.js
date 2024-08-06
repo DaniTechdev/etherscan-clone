@@ -28,7 +28,22 @@ export const EtherProvider = ({ children }) => {
 
       //SINGLE BLOCK TRANSACTION
       const blockTransaction = await provider.getBlock(getCurrentBlock);
-      setYourBlockTrans(blockTransaction);
+      setTransaction(blockTransaction.transactions);
+
+      //TOP TEN BLOCKS
+      //   const topTenBlock = await provider.getBlock(getCurrentBlock - 10);
+      //(2010-10 = 2000)
+
+      const previousBlock = getCurrentBlock - 10;
+      const listTenBlock = [];
+
+      for (let i = getCurrentBlock; i > previousBlock; i--) {
+        listTenBlock.push([i]);
+      }
+
+      //   console.log("listTenBlock", listTenBlock);
+
+      //   const listTenBlock = [];
     } catch (error) {
       console.log("something went wrong while fetching data", error);
     }
@@ -38,8 +53,8 @@ export const EtherProvider = ({ children }) => {
     accountDetails();
   }, []);
 
-  console.log(" current block number", currentBlock);
-  console.log("block transaction", yourBlockTrans);
+  //   console.log(" current block number", currentBlock);
+  //   console.log("block transactions", transaction);
 
   return <ETHERSCAN.Provider value={{ data }}>{children}</ETHERSCAN.Provider>;
 };
