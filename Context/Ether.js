@@ -55,6 +55,15 @@ export const EtherProvider = ({ children }) => {
         tenBlockWithDetails.push(singleBlockData);
         // console.log("singleBlockData", singleBlockData);
       });
+
+      //ETHER PRICE
+      const gasPrice = await provider.getGasPrice();
+
+      //converting the big number from onchain to readable format etherprice
+      const latestGasPrice = ethers.utils.formatUnits(gasPrice);
+      setGasPrice(latestGasPrice);
+      //   console.log(gasPrice, "gasPrice");
+      //   console.log(latestGasPrice, "latestGasPrice");
     } catch (error) {
       console.log("something went wrong while fetching data", error);
     }
@@ -67,5 +76,19 @@ export const EtherProvider = ({ children }) => {
   //   console.log(" current block number", currentBlock);
   //   console.log("block transactions", transaction);
 
-  return <ETHERSCAN.Provider value={{ data }}>{children}</ETHERSCAN.Provider>;
+  return (
+    <ETHERSCAN.Provider
+      value={{
+        data,
+        currentBlock,
+        topTenBlock,
+        yourBlockTrans,
+        transaction,
+        gasPrice,
+        provider,
+      }}
+    >
+      {children}
+    </ETHERSCAN.Provider>
+  );
 };
