@@ -44,13 +44,13 @@ const NavBar = () => {
         )
         .then((response) => {
           setPrice(response.data.result);
-          console.log(response);
+          // console.log(response);
 
-          console.log(response.data.result);
+          // console.log(response.data.result);
 
           //convert the timestamp into readable format since its in string form
           const timestamp = Number(response.data.result.ethusd_timestamp);
-          console.log(timestamp);
+          // console.log(timestamp);
 
           const date = new Date(timestamp);
 
@@ -92,7 +92,7 @@ const NavBar = () => {
         method: "eth_requestAccounts",
       });
 
-      console.log(accounts, "accounts");
+      // console.log(accounts, "accounts");
 
       if (accounts.length) {
         setUserAccount(accounts[0]);
