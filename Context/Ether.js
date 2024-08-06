@@ -37,13 +37,24 @@ export const EtherProvider = ({ children }) => {
       const previousBlock = getCurrentBlock - 10;
       const listTenBlock = [];
 
+      //to the top 1o block number
       for (let i = getCurrentBlock; i > previousBlock; i--) {
         listTenBlock.push([i]);
       }
 
       //   console.log("listTenBlock", listTenBlock);
 
-      //   const listTenBlock = [];
+      //GET BLOCK DETAILS
+      const getBlockDetails = listTenBlock.flat();
+      //   console.log("getBlockDetailsFlat", getBlockDetails);
+      setTopTenBlock(getBlockDetails);
+
+      getBlockDetails.map(async (el) => {
+        const singleBlockData = await provider.getBlock(el);
+
+        tenBlockWithDetails.push(singleBlockData);
+        // console.log("singleBlockData", singleBlockData);
+      });
     } catch (error) {
       console.log("something went wrong while fetching data", error);
     }
