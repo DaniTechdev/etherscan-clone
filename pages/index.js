@@ -86,14 +86,17 @@ const index = () => {
                         Miner: &nbsp; &nbsp;
                         <Link
                           className={Style.link}
-                          href={{ pathname: "/account", query: el.miner }}
+                          href={{
+                            pathname: "/account",
+                            query: el.miner,
+                          }}
                         >
                           <p> {el.miner.slice(0, 35)}</p>
                         </Link>
                       </samp>
                     </p>
                     <span>
-                      <Link href={{ pathname: "/account", query: el.miner }}>
+                      <Link href={{ pathname: "/account/", query: el.miner }}>
                         {el.transactions.length}
                       </Link>
                       &nbsp; TNS in 3Sec
