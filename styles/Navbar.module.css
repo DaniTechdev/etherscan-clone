@@ -132,6 +132,14 @@
 
 }
 
+.supplyEther h4{
+    color: #fff;
+}
+
+.etherPrice h4{
+    color: #fff;
+}
+
 .logoWidth{
     width: 80%;
     display: grid;

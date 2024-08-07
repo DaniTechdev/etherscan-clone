@@ -22,7 +22,7 @@ const index = () => {
 
   //CONVERT ETHER
   const convertIntoEther = (amount) => {
-    const ETH = ethers.utils.formatEther(amount);
+    const ETH = ethers.utils.formatEther(amount, "ether");
     return ETH;
   };
 
@@ -63,14 +63,17 @@ const index = () => {
       {/* //MAIN SECTON OF HOME PAGE */}
       <div className={Style.container}>
         <div className={Style.container_box}>
-          <h4>Latest Blocks</h4>
+          <h3>Latest Blocks</h3>
           <div className={Style.container_block}>
             {yourBlockTrans.map((el, i) => (
               <div className={Style.oneBlock} key={i + 1}>
                 <div className={Style.block}>
                   <div className={Style.info}>
                     <p className={Style.bk}>BK</p>
-                    <Link href={{ pathname: "/block", query: el.number }}>
+                    <Link
+                      className={Style.container_link}
+                      href={{ pathname: "/block", query: el.number }}
+                    >
                       {el.number}
                     </Link>
                   </div>
@@ -85,7 +88,7 @@ const index = () => {
                           className={Style.link}
                           href={{ pathname: "/account", query: el.miner }}
                         >
-                          {el.miner.slice(0, 35)}
+                          <p> {el.miner.slice(0, 35)}</p>
                         </Link>
                       </samp>
                     </p>
@@ -125,8 +128,11 @@ const index = () => {
                   <div>
                     <p className={Style.bx}>TS</p>
                   </div>
-                  <Link href={{ pathname: "/transaction", query: el }}>
-                    Hash:&nbsp;{el.slice(0, 55)}...
+                  <Link
+                    className={Style.container_link}
+                    href={{ pathname: "/transaction", query: el }}
+                  >
+                    Hash:&nbsp;{el.slice(0, 45)}...
                   </Link>
                 </div>
               </div>
