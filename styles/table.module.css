@@ -1,0 +1,44 @@
+.table{
+  
+    background-color:#1f1a36;
+    color: #fff ;
+    padding: .5rem 2rem;
+    margin-block: 1rem;
+    font-size: 12px;
+    z-index: 2000;
+}
+
+.table_head{
+    display: flex;
+    gap: 1rem;
+    align-items:center;
+    border-bottom: 1px solid #9a02ac;
+    padding-bottom: .5rem;
+}
+
+
+.btn{
+background-color: transparent;
+border: 0;
+color: #9a02ac;
+font-weight: 700;
+cursor: pointer;
+transition: all .2s ease ;
+}
+
+.btn:hover{
+    color: #fff;
+
+}
+
+.numberOfTran{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+}
+
+.dataTable{
+    display: grid;
+    grid-template-columns: 15rem repeat(16,5rem);
+}
