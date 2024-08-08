@@ -8,11 +8,11 @@ import Footer from "../components/Footer.jsx";
 const MyApp = ({ Component, pageProps }) => {
   return (
     <EtherProvider>
-      <div>
+      <div className="position">
         <NavBar />
-        <div>
-          <Component {...pageProps} />
-        </div>
+
+        <Component {...pageProps} />
+
         <Footer />
       </div>
     </EtherProvider>

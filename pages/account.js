@@ -21,7 +21,7 @@ const account = () => {
   const [totalTransaction, setTotalTransaction] = useState("");
   const [name, setname] = useState("");
   const [open, setOpen] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   //API USESTATE
   const [accountHistory, setAccountHistory] = useState([]);
@@ -51,6 +51,7 @@ const account = () => {
 
       if (open) {
         setOpen(false);
+        setLoading(true);
       }
 
       //ACCOUNT NAME
@@ -64,6 +65,10 @@ const account = () => {
       //   setLoading(false);
       // }
 
+      //GET ACCOUNT BALANCE
+      const accountBalance = await provider.getBalance(acc);
+      const showBalance = ethers.utils.formatUnits(accountBalance);
+      setBalance(showBalance);
       //API ETHERSCAN
 
       const API_KEY = "IAD2FPVYSNGQJRBXXGMIBEY76TEEU5MMY8";
@@ -126,61 +131,56 @@ const account = () => {
         });
 
       //ETHERSSCAN API ERC21 TOKEN
-      axios
-        .get(
-          `https://api.etherscan.io/api?module=account&action=tokennfttx&contractaddress=0x06012c8cf97bead5deae237070f9587f8e7a266d&address=${acc}&page=1&offset=100&startblock=0&endblock=27025780&sort=asc&apikey=${API_KEY}`
-        )
-        .then((response) => {
-          const tokenERC21 = response.data.result;
-          setERC21(tokenERC21);
-          console.log("tokenER21", tokenERC21);
-        });
+      // axios
+      //   .get(
+      //     `https://api.etherscan.io/api?module=account&action=tokennfttx&contractaddress=0x06012c8cf97bead5deae237070f9587f8e7a266d&address=${acc}&page=1&offset=100&startblock=0&endblock=27025780&sort=asc&apikey=${API_KEY}`
+      //   )
+      //   .then((response) => {
+      //     const tokenERC21 = response.data.result;
+      //     setERC21(tokenERC21);
+      //     console.log("tokenER21", tokenERC21);
+      //   });
 
       //ETHERSSCAN API ERC1155 TOKEN
 
-      axios
-        .get(
-          `https://api.etherscan.io/api?module=account&action=token1155tx&contractaddress=0x76be3b62873462d2142405439777e971754e8e77&address=${acc}&page=1&offset=100&startblock=0&endblock=99999999&sort=asc&apikey=${API_KEY}`
-        )
-        .then((response) => {
-          const tokenERC1155 = response.data.result;
-          setERC115(tokenERC1155);
-          console.log("tokenERC1155", tokenERC1155);
-        });
+      // axios
+      //   .get(
+      //     `https://api.etherscan.io/api?module=account&action=token1155tx&contractaddress=0x76be3b62873462d2142405439777e971754e8e77&address=${acc}&page=1&offset=100&startblock=0&endblock=99999999&sort=asc&apikey=${API_KEY}`
+      //   )
+      //   .then((response) => {
+      //     const tokenERC1155 = response.data.result;
+      //     setERC115(tokenERC1155);
+      //     console.log("tokenERC1155", tokenERC1155);
+      //   });
+
+      setLoading(false);
     } catch (error) {
       console.log("Something went wrong", error);
     }
   };
-  useEffect(() => {
-    accountData();
-  }, []);
+  // useEffect(() => {
+  //   accountData();
+  // }, []);
   return (
     <div className={Style.accountDIV}>
       {open ? (
         <div className={Style.btnContainer}>
-          <h1>
-            {open
-              ? "Welcome To Ether Finance"
-              : "Pleasse wait we are loading data"}
-          </h1>
-
-          <button
-            className={Style.openBtn}
-            onClick={() => accountData()}
-          ></button>
+          <h1>Welcome To Ether Finance</h1>
+          <button className={Style.openBtn} onClick={() => accountData()}>
+            Click Me
+          </button>
         </div>
       ) : (
         <div>
           {loading ? (
             <div className={Style.loading}>
-              loading..
               <Image src={loader} alt="loading" width={100} height={100} />
             </div>
           ) : (
             ""
           )}
 
-          {loading ? (
+          {!loading ? (
             <div className={Style.container}>
               <div className={Style.box}>
                 <div className={Style.account}>
@@ -207,6 +207,11 @@ const account = () => {
                   <div className={Style.accountBalance}>
                     <p className={Style.color}>Balance</p>
                     <p>{balance} ETH</p>
+                  </div>
+
+                  <div className={Style.accountValue}>
+                    <p className={Style.color}>Balance</p>
+                    <p>$ {balance * 2435}</p>
                   </div>
                 </div>
 
