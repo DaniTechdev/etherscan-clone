@@ -41,4 +41,66 @@ transition: all .2s ease ;
 .dataTable{
     display: grid;
     grid-template-columns: 15rem repeat(16,5rem);
+    align-items: center;
+    gap: 1rem;
+    font-size: 10px;
+    overflow-x: auto;
+
+}
+
+.dataTable::-webkit-scrollbar{
+    width: 1rem;
+}
+
+.dataTable::-webkit-scrollbar-track{
+    border-radius: inset 0 0 6px;
+    cursor: pointer;
+}
+
+
+.dataTable::-webkit-scrollbar{
+    background-color: #9a02ac;
+    outline: 1px solid slategray;
+    border-radius: 1rem;
+}
+
+
+.tableTitle  p{
+    font-size: 12px;
+    font-weight: 700;
+    color: #9a02ac;
+}
+
+.transsHash{
+    display: flex;
+    align-items: center;
+    gap:.5rem ;
+}
+
+.toLink{
+    cursor: pointer;
+    color: #9a02ac;
+}
+
+/* //////ERC20  TOKEN*/
+.sorry{
+    text-align: center;
+
+}
+
+
+@media screen and (max-width:35em){
+    .table_head{
+        display: grid;
+        grid-template-columns:repeat(3,1fr) ;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .dataTable{
+        overflow-x: auto;
+    }
+    
+
+
 }
