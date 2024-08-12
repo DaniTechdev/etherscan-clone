@@ -71,7 +71,7 @@ transition: all .2s ease ;
     color: #9a02ac;
 }
 
-.transsHash{
+.transHash{
     display: flex;
     align-items: center;
     gap:.5rem ;
