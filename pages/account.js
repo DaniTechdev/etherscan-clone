@@ -41,7 +41,9 @@ const account = () => {
 
   //get get the first element/key from the object, we will use Object.keys(query[0])
   const acc = Object.keys(query)[0];
-  console.log("acc", acc);
+  // console.log("acc", acc);
+  // console.log("blockRangeTransaction", blockRangeTransaction);
+  // console.log("blockMindedByAddress", blockMindedByAddress);
 
   const accountData = async () => {
     setAccount(acc);

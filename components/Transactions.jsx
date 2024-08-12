@@ -6,7 +6,7 @@ import Link from "next/link";
 import Style from "../styles/table.module.css";
 
 const Transactions = ({ accountHistory, handleClick }) => {
-  console.log("accountHistory", accountHistory);
+  // console.log("accountHistory", accountHistory);
 
   return (
     <div className={Style.dataTable}>
