@@ -127,7 +127,7 @@ const Table = ({
       </div>
 
       {historyAccount ? (
-        <Transaction handleClick={accountData} accountHistor={accountHistory} />
+        <Transaction handleClick={accountData} accountHistory={accountHistory} />
       ) : (
         ""
       )}
