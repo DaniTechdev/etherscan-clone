@@ -7,7 +7,9 @@ import Link from "next/link";
 
 
 const Transactions = ({accountHistory,handleClick}) => {
-  return <div>Transactions</div>;
+
+
+  return <div>Transactions hell</div>;
 };
 
 export default Transactions;
