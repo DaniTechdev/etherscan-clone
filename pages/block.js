@@ -57,7 +57,7 @@ const block = () => {
       const gasUsed = ethers.utils.formatEther(getBlock.gasUsed);
       setethGasUsed(gasUsed);
 
-      // console.log("gasLimit,gasUsed", gasLimit, gasUsed);
+      console.log("gasLimit,gasUsed", gasLimit, gasUsed);
 
       const difficulty = ethers.utils.formatEther(getBlock._difficulty);
       setEthDifficulty(difficulty);
