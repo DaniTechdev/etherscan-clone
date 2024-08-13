@@ -61,7 +61,7 @@ const Transactions = ({ accountHistory, handleClick }) => {
         <div className={Style.tableInfo}>
           {accountHistory.map((el, i) => (
             <div className={Style.transHash} key={i + 1}>
-              <p className={Style}>{el.timeStamp}</p>
+              <p>{el.timeStamp}</p>
             </div>
           ))}
         </div>
@@ -74,7 +74,7 @@ const Transactions = ({ accountHistory, handleClick }) => {
         <div className={Style.tableInfo}>
           {accountHistory.map((el, i) => (
             <div className={Style.transHash} key={i + 1}>
-              <p className={Style.toLink}>{el.from.slice(0, 10)}...</p>
+              <p>{el.from.slice(0, 10)}...</p>
             </div>
           ))}
         </div>

@@ -96,8 +96,11 @@ const index = () => {
                       </samp>
                     </p>
                     <span>
-                      <Link href={{ pathname: "/account/", query: el.miner }}>
-                        {el.transactions.length}
+                      <Link href={{ pathname: "/block/", query: el.number }}>
+                        <span className={Style.container_link}>
+                          {" "}
+                          {el.transactions.length}
+                        </span>
                       </Link>
                       &nbsp; TNS in 3Sec
                     </span>

@@ -17,6 +17,8 @@ const transaction = () => {
   const transDetails = [];
   const [transactionData, setTransactionData] = useState(transDetails);
 
+  console.log("transactionData", transactionData);
+
   //FORMAT VALUE
   const [ethGasLimit, setEthGasLimit] = useState("");
   const [gasPrice, setGasPrice] = useState("");
@@ -27,6 +29,8 @@ const transaction = () => {
       const transactionDetails = await provider.getTransaction(hash);
       setTransactionData(transactionDetails);
       transDetails.push(transactionDetails);
+
+      console.log("transactionDetails", transactionDetails);
 
       //CONVERT ETHER
       const gasLimitPrice = ethers.utils.formatUnits(
@@ -108,6 +112,58 @@ const transaction = () => {
                 {transactionData.transactionIndex
                   ? transactionData.transactionIndex
                   : "No Transaction Index"}
+              </p>
+            </div>
+
+            <div className={StyleTransaction.dataRow}>
+              <p>R </p>
+              <p>{transactionData.r ? transactionData.r : "No R "}</p>
+            </div>
+
+            <div className={StyleTransaction.dataRow}>
+              <p> S</p>
+              <p>{transactionData.s ? transactionData.s : "No S "}</p>
+            </div>
+
+            <div className={StyleTransaction.dataRow}>
+              <p>Gas Limit </p>
+              <p>{ethGasLimit}</p>
+            </div>
+
+            <div className={StyleTransaction.dataRow}>
+              <p>Gas Price </p>
+              <p>{gasPrice}</p>
+            </div>
+
+            <div className={StyleTransaction.dataRow}>
+              <p>Type </p>
+              <p>{transactionData.type}</p>
+            </div>
+
+            <div className={StyleTransaction.dataRow}>
+              <p>V </p>
+              <p>{transactionData.v}</p>
+            </div>
+
+            <div className={StyleTransaction.dataRow}>
+              <p>Value </p>
+              <p>{VALUE}</p>
+            </div>
+
+            <div className={StyleTransaction.dataRow}>
+              <p>Chain Id </p>
+              <p>{transactionData.chainId}</p>
+            </div>
+
+            <div className={StyleTransaction.dataRow}>
+              <p>Confirmations </p>
+              <p>{transactionData.confirmations}</p>
+            </div>
+
+            <div className={StyleTransaction.dataRow}>
+              <p>Created </p>
+              <p>
+                {transactionData.creates ? transactionData.creates : "No data"}
               </p>
             </div>
           </div>

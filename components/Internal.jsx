@@ -73,11 +73,7 @@ const Internal = ({ internalByAddress, handleClick }) => {
         <div className={Style.tableInfo}>
           {internalByAddress.map((el, i) => (
             <div className={Style.transHash} key={i + 1}>
-              <p>
-                <Link href={{ pathname: "/account/", query: el.from }}>
-                  <p onClick={handleClick}>{el.from.slice(0, 10)}...</p>
-                </Link>
-              </p>
+              <p>{el.from.slice(0, 10)}</p>
             </div>
           ))}
         </div>

@@ -122,12 +122,15 @@ const Table = ({
       <div className={Style.numberOfTran}>
         <FaFilter />
         <p>
-          Latest 10 from a total of <span>{totalTransaction}</span>
+          Latest 10 from a total of <span>{totalTransaction.length}</span>
         </p>
       </div>
 
       {historyAccount ? (
-        <Transaction handleClick={accountData} accountHistory={accountHistory} />
+        <Transaction
+          handleClick={accountData}
+          accountHistory={accountHistory}
+        />
       ) : (
         ""
       )}
