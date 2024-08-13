@@ -6,13 +6,13 @@ import { ethers } from "ethers";
 //INTERNAL IMPORT
 
 import Style from "../styles/table.module.css";
-import { Etherscan } from "../Context/Ether";
+import { ETHERSCAN } from "../Context/Ether";
 import { FaFilter, FaUserAltSlash } from "react-icons/fa";
 import { AiFillEye } from "react-icons/ai";
 import StyleTransaction from "../styles/block.module.css";
 
 const block = () => {
-  const { provider } = useContext(Etherscan);
+  const { provider } = useContext(ETHERSCAN);
   const router = useRouter();
   const { query } = router;
 
@@ -46,6 +46,7 @@ const block = () => {
   const getBlockDetails = async () => {
     try {
       const getBlock = await provider.getBlock(blockNumber);
+
       dataBlock.push(getBlock);
       setBlockData(getBlock);
 
@@ -55,11 +56,38 @@ const block = () => {
 
       const gasUsed = ethers.utils.formatEther(getBlock.gasUsed);
       setethGasUsed(gasUsed);
+
+      // console.log("gasLimit,gasUsed", gasLimit, gasUsed);
+
+      const difficulty = ethers.utils.formatEther(getBlock._difficulty);
+      setEthDifficulty(difficulty);
+
+      //TRANSACTION
+      setTransactionTab(getBlock.transactions);
     } catch (error) {
       console.log("something went wrong", error);
     }
   };
-  return <div>block</div>;
+
+  useEffect(() => {
+    getBlockDetails();
+  }, []);
+  return (
+    <div className={StyleTransaction.block}>
+      <div className={Style.box}>
+        <div className={StyleTransaction.box_header}>
+          <h3>Block Number</h3>
+          <p>{blockNumber}</p>
+        </div>
+
+        <div className={StyleTransaction.blockTable}>
+          <div className={StyleTransaction.blockBtn}>
+            <button onClick={() => openTab()}>Block Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default block;
