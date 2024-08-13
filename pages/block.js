@@ -83,7 +83,75 @@ const block = () => {
         <div className={StyleTransaction.blockTable}>
           <div className={StyleTransaction.blockBtn}>
             <button onClick={() => openTab()}>Block Details</button>
+            <button onClick={() => openTab()}>Block Transactions</button>
           </div>
+
+          {blockNo ? (
+            <div>
+              <div className={StyleTransaction.dataRow}>
+                <p>Number</p>
+                <p>{blockData.number}</p>
+              </div>
+
+              <div className={StyleTransaction.dataRow}>
+                <p>TimeStamp</p>
+                <p>{blockData.timeStamp}</p>
+              </div>
+
+              <div className={StyleTransaction.dataRow}>
+                <p>Miner</p>
+                <Link href={{ pathname: "/account/", query: blockData.miner }}>
+                  <p className={StyleTransaction.color}>{blockData.miner}</p>
+                </Link>
+              </div>
+
+              <div className={StyleTransaction.dataRow}>
+                <p>Hash</p>
+                <p>{blockData.hash}</p>
+              </div>
+
+              <div className={StyleTransaction.dataRow}>
+                <p>ParentHash</p>
+                <p>
+                  {blockData.parentHash ? blockData.parentHash : "No data "}
+                </p>
+              </div>
+
+              <div className={StyleTransaction.dataRow}>
+                <p>Nounce</p>
+                <p>{blockData.nounce}</p>
+              </div>
+
+              <div className={StyleTransaction.dataRow}>
+                <p>Extra Data</p>
+                <p>{blockData.extraData}</p>
+              </div>
+
+              <div className={StyleTransaction.dataRow}>
+                <p>Difficulty</p>
+                <p>{blockData.difficulty ? blockData.difficulty : "No data"}</p>
+              </div>
+
+              <div className={StyleTransaction.dataRow}>
+                <p>Gas Limit</p>
+                <p>{ethGasLimit}</p>
+              </div>
+
+              <div className={StyleTransaction.dataRow}>
+                <p>Gas Limite</p>
+                <p>{ethGasUsed} ETH</p>
+              </div>
+
+              <div className={StyleTransaction.dataRow}>
+                <p>Gas Limit</p>
+                <p>{ethDifficulty} ETH</p>
+              </div>
+            </div>
+          ) : (
+            <div className={StyleTransaction.dataTable}>
+              <div className={StyleTransaction.column}></div>
+            </div>
+          )}
         </div>
       </div>
     </div>
