@@ -74,7 +74,7 @@ const block = () => {
   }, []);
   return (
     <div className={StyleTransaction.block}>
-      <div className={Style.box}>
+      <div className={StyleTransaction.box}>
         <div className={StyleTransaction.box_header}>
           <h3>Block Number</h3>
           <p>{blockNumber}</p>
