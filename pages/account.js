@@ -118,7 +118,7 @@ const account = () => {
         .then((response) => {
           const blockMinedByAddrr = response.data.result;
           setBlockMindedByAddress(blockMinedByAddrr);
-          console.log("blockMineByAddrr", blockMinedByAddrr);
+          // console.log("blockMineByAddrr", blockMinedByAddrr);
         });
       // get(
       //   `https://api.etherscan.io/api?module=account&action=getminedblocks&address=${acc}&blocktype=blocks&page=1&offset=10&apikey=${API_KEY}`
