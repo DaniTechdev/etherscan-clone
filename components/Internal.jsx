@@ -116,7 +116,7 @@ const Internal = ({ internalByAddress, handleClick }) => {
         <div className={Style.tableInfo}>
           {internalByAddress.map((el, i) => (
             <div className={Style.transHash} key={i + 1}>
-              <p>{el.gasUSed}</p>
+              <p>{el.gasUsed}</p>
             </div>
           ))}
         </div>

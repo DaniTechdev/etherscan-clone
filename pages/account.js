@@ -81,20 +81,22 @@ const account = () => {
           `https://api.etherscan.io/api?module=account&action=txlist&address=${acc}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${API_KEY}`
         )
         .then((response) => {
-          console.log("result by addresss click", response.data.result);
+          // console.log("result by addresss click", response.data.result);
 
           setAccountHistory(response.data.result);
         });
 
       //TRANSACTION HISOTRY BY INTERNAL HASH
       await fetch(
-        `https://api.etherscan.io/api?module=account&action=txlistinternal&txhash=${acc}&apikey=${API_KEY}`
+        `https://api.etherscan.io/api?module=account&action=txlist&address=${acc}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${API_KEY}`
+        // `https://api.etherscan.io/api?module=account&action=txlistinternal&address=${acc}&startblock=0&endblock=2702578&page=1&offset=10&sort=asc&apikey=${API_KEY}`
+        // `https://api.etherscan.io/api?module=account&action=txlistinternal&txhash=${acc}&apikey=${API_KEY}`
       )
         .then((response) => response.json())
         .then((data) => {
           const innerData = data.result;
           setInternalByAddress(innerData);
-          console.log("TRANSACTION HISOTRY BY INTERNAL HASH", innerData);
+          // console.log("TRANSACTION HISOTRY BY INTERNAL HASH", innerData);
         });
 
       //ETHERSCAN API ERC20 TOKEN
@@ -115,9 +117,12 @@ const account = () => {
         )
         .then((response) => {
           const blockMinedByAddrr = response.data.result;
-          setBlockMindedByAddress(blockMindedByAddress);
-          console.log("blockMineByAddrr", blockMindedByAddress);
+          setBlockMindedByAddress(blockMinedByAddrr);
+          console.log("blockMineByAddrr", blockMinedByAddrr);
         });
+      // get(
+      //   `https://api.etherscan.io/api?module=account&action=getminedblocks&address=${acc}&blocktype=blocks&page=1&offset=10&apikey=${API_KEY}`
+      // );
 
       //
 
