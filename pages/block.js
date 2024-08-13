@@ -63,7 +63,7 @@ const block = () => {
       setEthDifficulty(difficulty);
 
       //TRANSACTION
-      setTransactionTab(getBlock.transactions);
+      setTransact(getBlock.transactions);
     } catch (error) {
       console.log("something went wrong", error);
     }
@@ -149,7 +149,28 @@ const block = () => {
             </div>
           ) : (
             <div className={StyleTransaction.dataTable}>
-              <div className={StyleTransaction.column}></div>
+              <div className={StyleTransaction.column}>
+                <div className={Style.column}>
+                  <div className={Style.tableTitle}>
+                    <p>All Transactions in the block is {transact.length}</p>
+                  </div>
+                  <div className={Style.tableInfo}>
+                    {transact.map((el, i) => (
+                      <div className={Style.transHash} key={i + 1}>
+                        <span>{i + 1}</span>
+                        <Link
+                          href={{
+                            pathname: "/transaction/",
+                            query: blockData.hash,
+                          }}
+                        >
+                          <p className={StyleTransaction.color}>{el}</p>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>
